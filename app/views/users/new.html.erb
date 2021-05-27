@@ -4,4 +4,23 @@
     <h1>Sign Up!</h1>
   </header>
 
+  <%= form_for :user, url: '/users' do |f| %>
+    First Name: <%= f.text_field :first_name, class: "form-control"%>
+    <br>
+
+    Last Name: <%= f.text_field :last_name, class: "form-control" %>
+    <br>
+
+    Email: <%= f.text_field :email, class: "form-control" %>
+    <br>
+
+    Password: <%= f.password_field :password, class: "form-control"  %>
+    <br>
+
+    Password Confirmation: <%= f.password_field :password_confirmation, class: "form-control"  %>
+    <br>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+
 </section>
