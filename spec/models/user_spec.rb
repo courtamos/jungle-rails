@@ -164,5 +164,20 @@ RSpec.describe User, type: :model do
       expect(@authenticated).to be_present
     end
 
+    it "does not authenticate when credentials are wrong" do
+      @user = User.new(
+        first_name: 'Prince',
+        last_name: 'Vegeta',
+        email: 'vegeta@email.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      @user.save
+      @authenticated = User.authenticate_with_credentials(@user.email, 'notpassword')
+
+      expect(@authenticated).to be false
+    end
+
   end
 end
