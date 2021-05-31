@@ -131,6 +131,20 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
+    it "validates that password must have a minimum length of 8 characters" do
+      @user = User.new(
+        first_name: 'Prince',
+        last_name: 'Vegeta',
+        email: 'vegeta@email.com',
+        password: 'pass',
+        password_confirmation: 'pass'
+      )
+
+      @user.save
+
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
+    end
+
 
   end
 end
