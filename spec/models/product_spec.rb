@@ -30,6 +30,16 @@ RSpec.describe Product, type: :model do
     end
 
     it "validates price" do
+      @product = Product.new
+
+      @product.name = 'Product Name'
+      @product.price = 'price'
+      @product.quantity = 1
+      @product.category_id = 1
+
+      @product.save
+
+      expect(@product.errors.full_messages).to include("Price is not a number")
     end
 
     it "validates quantity" do
