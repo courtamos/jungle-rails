@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   describe 'Validations' do
+    before(:each) do
+      @product = Product.new
+    end
 
     it "successfully saves" do
-      @product = Product.new
 
       @product.name = 'Product Name'
       @product.price = 100
@@ -17,7 +19,6 @@ RSpec.describe Product, type: :model do
     end
 
     it "validates name" do
-      @product = Product.new
 
       @product.name = nil
       @product.price = 100
@@ -30,7 +31,6 @@ RSpec.describe Product, type: :model do
     end
 
     it "validates price" do
-      @product = Product.new
 
       @product.name = 'Product Name'
       @product.price = 'price'
@@ -43,7 +43,6 @@ RSpec.describe Product, type: :model do
     end
 
     it "validates quantity" do
-      @product = Product.new
 
       @product.name = 'Product Name'
       @product.price = 100
@@ -56,7 +55,6 @@ RSpec.describe Product, type: :model do
     end
 
     it "validates category" do
-      @product = Product.new
 
       @product.name = 'Product Name'
       @product.price = 100
