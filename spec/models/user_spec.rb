@@ -117,6 +117,19 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Last name can't be blank")
     end
   
+    it "validates that email is required" do
+      @user = User.new(
+        first_name: 'Prince',
+        last_name: 'Vegeta',
+        email: nil,
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      @user.save
+
+      expect(@user.errors.full_messages).to include("Email can't be blank")
+    end
 
 
   end
