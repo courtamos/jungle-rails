@@ -43,6 +43,16 @@ RSpec.describe Product, type: :model do
     end
 
     it "validates quantity" do
+      @product = Product.new
+
+      @product.name = 'Product Name'
+      @product.price = 100
+      @product.quantity = nil
+      @product.category_id = 1
+
+      @product.save
+
+      expect(@product.errors.full_messages).to include("Quantity can't be blank")
     end
 
     it "validates category" do
