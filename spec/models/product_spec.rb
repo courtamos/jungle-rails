@@ -17,6 +17,16 @@ RSpec.describe Product, type: :model do
     end
 
     it "validates name" do
+      @product = Product.new
+
+      @product.name = nil
+      @product.price = 100
+      @product.quantity = 1
+      @product.category_id = 1
+
+      @product.save
+
+      expect(@product.errors.full_messages).to include ("Name can't be blank")
     end
 
     it "validates price" do
