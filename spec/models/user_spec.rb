@@ -147,4 +147,22 @@ RSpec.describe User, type: :model do
 
 
   end
+
+  describe '.authenticate_with_credentials' do
+    it "returns the user when credentials are authenticated" do
+      @user = User.new(
+        first_name: 'Prince',
+        last_name: 'Vegeta',
+        email: 'vegeta@email.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      @user.save
+      @authenticated = User.authenticate_with_credentials(@user.email, @user.password)
+
+      expect(@authenticated).to be_present
+    end
+
+  end
 end
