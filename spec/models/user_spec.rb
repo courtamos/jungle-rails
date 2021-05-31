@@ -86,9 +86,21 @@ RSpec.describe User, type: :model do
       )
       @usercopy.save
 
-      puts @usercopy.errors.full_messages
-
       expect(@usercopy.errors.full_messages).to include("Email has already been taken")
+    end
+
+    it "validates that first name is required" do
+      @user = User.new(
+        first_name: nil,
+        last_name: 'Vegeta',
+        email: 'vegeta@email.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      @user.save
+
+      expect(@user.errors.full_messages).to include("First name can't be blank")
     end
 
 
