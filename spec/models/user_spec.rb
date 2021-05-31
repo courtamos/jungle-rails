@@ -67,6 +67,30 @@ RSpec.describe User, type: :model do
       expect(@usercopy.errors.full_messages).to include("Email has already been taken")
     end
 
+    it "validates that emails are not case senstivie" do
+      @user = User.new(
+        first_name: 'Prince',
+        last_name: 'Vegeta',
+        email: 'vegeta@email.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+      @user.save
+
+      @usercopy = User.new(
+        first_name: 'Prince',
+        last_name: 'Vegeta',
+        email: 'VEGETA@email.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+      @usercopy.save
+
+      puts @usercopy.errors.full_messages
+
+      expect(@usercopy.errors.full_messages).to include("Email has already been taken")
+    end
+
 
   end
 end
