@@ -179,5 +179,22 @@ RSpec.describe User, type: :model do
       expect(@authenticated).to be false
     end
 
+    it "returns the user when credentials are authenticated with whitespace or mismatching case" do
+      @user = User.new(
+        first_name: 'Prince',
+        last_name: 'Vegeta',
+        email: 'vegeta@email.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+
+      @user.save
+      @email = '  VEGETA@email.com'
+      @authenticated = User.authenticate_with_credentials(@email, @user.password)
+
+      expect(@authenticated).to be_present
+      expect(@authenticated.email).to eq(@email)
+    end
+
   end
 end
