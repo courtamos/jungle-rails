@@ -1,6 +1,11 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Ruby on Rails for purposes of learning a new language for the Lighthouse Labs Wed Development Bootcamp.
+
+## Final Product
+![“screenshot of home page”](https://github.com/courtamos/jungle-rails/blob/master/docs/home_page.png?raw=true)
+![“screenshot of admin categories”](https://github.com/courtamos/jungle-rails/blob/master/docs/admin_categories.png?raw=true)
+![“screenshot of my cart”](https://github.com/courtamos/jungle-rails/blob/master/docs/my_cart.png?raw=true)
 
 ## Additional Steps for Apple M1 Machines
 
